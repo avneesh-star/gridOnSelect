@@ -79,6 +79,8 @@ namespace gridOnSelect
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grd, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
+                e.Row.Attributes["ondblclick"] = Page.ClientScript.GetPostBackClientHyperlink(grd, "Edit$" + e.Row.RowIndex);
+                e.Row.Attributes["style"] = "cursor:pointer";
             }
         }
 
@@ -103,6 +105,11 @@ namespace gridOnSelect
             {
                 string Message = ex.Message;
             }
+        }
+
+        protected void grd_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
         }
     }
 }

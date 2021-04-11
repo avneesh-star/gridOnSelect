@@ -52,31 +52,45 @@
                 
             </div>
             <div class="col-md-7">
-                <asp:GridView ID="grd" runat="server" AutoGenerateColumns="false" DataKeyNames="id" OnRowDataBound="grd_RowDataBound"  OnSelectedIndexChanged="grd_SelectedIndexChanged">
+                <asp:GridView ID="grd" runat="server" AutoGenerateColumns="false"  DataKeyNames="id" OnRowDataBound="grd_RowDataBound"  OnSelectedIndexChanged="grd_SelectedIndexChanged" OnRowEditing="grd_RowEditing">
                     <Columns>
-                        <asp:TemplateField HeaderText="id"  Visible="false">
+                        <asp:TemplateField HeaderText="id" Visible="false">
                             <ItemTemplate>
                                 <%# Eval("id") %>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Company Name">
                             <ItemTemplate>
-                                <%# Eval("companyName") %>
+                                <asp:Label ID="lblcompanyName" runat="server" Text='<%# Eval("companyName") %>'></asp:Label>
+                                <asp:TextBox ID="txtcompanyName" runat="server" Text='<%# Eval("companyName") %>' Visible="false"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Contact Person">
                             <ItemTemplate>
-                                <%# Eval("ContactPerson") %>
+                                <asp:Label ID="lblContactPerson" runat="server" Text='<%# Eval("ContactPerson") %>'></asp:Label>
+                                <asp:TextBox ID="txtContactPerson" runat="server" Text='<%# Eval("companyName") %>' Visible="false"></asp:TextBox>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Current Status">
                             <ItemTemplate>
-                                <%# Eval("CurrentStatus") %>
+                                <asp:Label ID="lblCurrentStatus" runat="server" Text='<%# Eval("CurrentStatus") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlCntStatus" CssClass="form-control" runat="server" Visible="false">
+                                    <asp:ListItem Value="1" Text="Approval"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="Approved"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="Declined"></asp:ListItem>
+                                    <asp:ListItem Value="4" Text="Pending"></asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Financial Performance">
                             <ItemTemplate>
-                                <%# Eval("FPerformance") %>
+                              <asp:Label ID="lblFStatus" runat="server" Text='<%# Eval("FPerformance") %>'></asp:Label>
+                                <asp:DropDownList ID="ddlFStatus" CssClass="form-control" runat="server"  Visible="false">
+                                    <asp:ListItem Value="1" Text="Average"></asp:ListItem>
+                                    <asp:ListItem Value="2" Text="Average"></asp:ListItem>
+                                    <asp:ListItem Value="3" Text="Achieving"></asp:ListItem>
+                                    <asp:ListItem Value="4" Text="Outstanding"></asp:ListItem>
+                                </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
